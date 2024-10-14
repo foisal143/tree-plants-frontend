@@ -1,6 +1,7 @@
 import CategorySection from './CategorySection/CategorySection';
 import HeroSection from './HeroSection/HeroSection';
 import Introduction from './Introduction/Introduction';
+import ProductSection from './productSection/productSection';
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <HeroSection />
       <Introduction />
       <CategorySection />
+      <ProductSection />
     </>
   );
 };
