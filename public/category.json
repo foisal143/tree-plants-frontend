@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "name": "Indoor Plants",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTREt9SkwuWxHRbV5zGvjT5RTcBOQRy9aUfxQ&s"
+  },
+  {
+    "id": "2",
+    "name": "Outdoor Trees",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr_ulAzbkIzzLNQV661tV6dvxTdGxtLng_QA&s"
+  },
+  {
+    "id": "3",
+    "name": "Flowering Plants",
+    "image": "https://m.media-amazon.com/images/I/81IWLxNZ0mL._AC_UF1000,1000_QL80_.jpg"
+  },
+  {
+    "id": "4",
+    "name": "Succulents & Cacti",
+    "image": "https://mahoneysgarden.com/wp-content/uploads/2019/09/cactus-1-1.jpg"
+  },
+  {
+    "id": "5",
+    "name": "Fruit Trees",
+    "image": "https://agrilifetoday.tamu.edu/wp-content/uploads/2020/10/AdobeStock_89000280-1024x683.jpeg"
+  },
+  {
+    "id": "6",
+    "name": "Shrubs & Bushes",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_y8Kv7xktR8g2LraT_kmfxPE2beqid7fSIA&s"
+  }
+]

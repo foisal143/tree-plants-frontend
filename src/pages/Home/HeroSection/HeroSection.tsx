@@ -5,19 +5,18 @@ import HeadingText from '../../../components/HeadingText';
 const HeroSection = () => {
   return (
     <div
-      className="bg-[url(https://thumbs.dreamstime.com/b/hands-female-botanist-holding-seedling-plant-nursery-hands-female-botanist-holding-seedling-plant-nursery-yellow-164464346.jpg)] bg-cover bg-center h-[650px] w-full  relative
+      className="bg-[url(https://thumbs.dreamstime.com/b/hands-female-botanist-holding-seedling-plant-nursery-hands-female-botanist-holding-seedling-plant-nursery-yellow-164464346.jpg)] bg-cover bg-no-repeat bg-center h-[100vh] w-full  relative
     "
     >
       <div className="w-full h-full absolute top-0 left-0 bg-black/30">
         <Container>
-          <div className=" text-white text-center h-[650px]  flex justify-center items-center">
+          <div className=" text-white text-center h-[100vh] flex justify-center items-center">
             <div className="lg:w-1/2 mx-auto">
               <HeadingText
                 style="text-center"
-                heading="Tree Plants"
-                subheading=""
+                heading="Welcome to Tree Plants "
               />
-              <p>
+              <p className="my-5">
                 Welcome to Tree Plants Nursery, your trusted source for a wide
                 variety of trees and plants that will enhance any garden or
                 home. Whether you're a seasoned gardener or just starting out,
@@ -27,7 +26,7 @@ const HeroSection = () => {
                 more to create your perfect oasis
               </p>
               <Link to="/about">
-                <button className="btn-primary mt-5">Explore More</button>
+                <button className="btn-primary ">Explore More</button>
               </Link>
             </div>
           </div>
