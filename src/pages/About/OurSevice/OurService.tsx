@@ -10,7 +10,7 @@ const OurService = () => {
           From succulents and flowering plants to fruit trees and shrubs, we
           offer a wide range of products to suit every garden and home.
         </p>
-        <Link to="/product">
+        <Link to="/products">
           <button className="btn-primary mt-5">Buy Plants</button>
         </Link>
       </div>

@@ -14,3 +14,7 @@ body {
   max-width: 1580px;
   margin: auto;
 }
+
+.navlink li a.active {
+  color: rgb(52, 225, 52);
+}
