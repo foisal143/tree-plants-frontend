@@ -5,7 +5,7 @@ type THeadingText = {
 const HeadingText = ({ heading, style }: THeadingText) => {
   return (
     <div className={` ${style}`}>
-      <h2 className="text-3xl  font-semibold lg:text-5xl font-headerFont">
+      <h2 className="text-3xl  font-semibold lg:text-4xl font-headerFont">
         {heading}
       </h2>
     </div>

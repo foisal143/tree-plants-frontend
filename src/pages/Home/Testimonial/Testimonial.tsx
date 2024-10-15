@@ -51,16 +51,15 @@ const Testimonial = () => {
               testimonials.map(
                 (item: { name: string; image: string; comments: string }) => (
                   <SwiperSlide key={item.name}>
-                    <div className="card h-[250px] bg-base-100 rounded w-full shadow-xl">
-                      <figure className="px-10 pt-10">
-                        <img
-                          src={item.image}
-                          alt="Card image"
-                          className="rounded-full w-24 h-24"
-                        />
-                      </figure>
+                    <div className="card h-[300px] bg-base-100 rounded w-full shadow-xl">
+                      <img
+                        src={item.image}
+                        alt="Card image"
+                        className="rounded-full mx-auto w-24 h-24"
+                      />
+
                       <div className="card-body items-center text-center">
-                        <h2 className="card-title">Jhon</h2>
+                        <h2 className="card-title">{item.name}</h2>
                         <p>{item.comments}</p>
                       </div>
                     </div>

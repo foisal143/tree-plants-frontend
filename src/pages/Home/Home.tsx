@@ -3,6 +3,7 @@ import GetInTouchSec from './GetInTouchSec/GetInTouchSec';
 import HeroSection from './HeroSection/HeroSection';
 import Introduction from './Introduction/Introduction';
 import ProductSection from './ProductSection/ProductSection';
+import SubscribedSection from './SubscribedSection/SubscribedSection';
 import Testimonial from './Testimonial/Testimonial';
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
       <ProductSection />
       <GetInTouchSec />
       <Testimonial />
+      <SubscribedSection />
     </>
   );
 };
