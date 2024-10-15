@@ -1,7 +1,8 @@
 import CategorySection from './CategorySection/CategorySection';
+import GetInTouchSec from './GetInTouchSec/GetInTouchSec';
 import HeroSection from './HeroSection/HeroSection';
 import Introduction from './Introduction/Introduction';
-import ProductSection from './productSection/productSection';
+import ProductSection from './ProductSection/ProductSection';
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Introduction />
       <CategorySection />
       <ProductSection />
+      <GetInTouchSec />
     </>
   );
 };

@@ -1,7 +1,7 @@
-import { TProduct } from '../pages/Home/productSection/productSection';
+import { TProduct } from '../pages/Home/ProductSection/productSection';
 
 const ProductCard = ({ product }: { product: TProduct }) => {
-  const { image, title, category, price, description } = product;
+  const { image, title, price, description } = product;
   return (
     <div className="card bg-base-100 w-full shadow-xl">
       <figure>

@@ -5,7 +5,7 @@ import HeadingText from '../../../components/HeadingText';
 const HeroSection = () => {
   return (
     <div
-      className="bg-[url(https://thumbs.dreamstime.com/b/hands-female-botanist-holding-seedling-plant-nursery-hands-female-botanist-holding-seedling-plant-nursery-yellow-164464346.jpg)] bg-cover bg-no-repeat bg-center h-[100vh] w-full  relative
+      className="bg-[url(https://thumbs.dreamstime.com/b/hands-female-botanist-holding-seedling-plant-nursery-hands-female-botanist-holding-seedling-plant-nursery-yellow-164464346.jpg)] bg-cover bg-no-repeat bg-center h-[100vh] w-full  relative bg-fixed
     "
     >
       <div className="w-full h-full absolute top-0 left-0 bg-black/30">
