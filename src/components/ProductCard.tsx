@@ -1,4 +1,4 @@
-import { TProduct } from '../pages/Home/ProductSection/productSection';
+import { TProduct } from '../pages/Home/ProductSection/ProductSection';
 
 const ProductCard = ({ product }: { product: TProduct }) => {
   const { image, title, price, description } = product;
