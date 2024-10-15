@@ -1,0 +1,27 @@
+[
+  {
+    "name": "John Doe",
+    "comments": "Tree Plants Nursery has the best selection of indoor plants! The Peace Lily I bought is thriving, and their customer service was excellent.",
+    "image": "https://media.istockphoto.com/id/1364917563/photo/businessman-smiling-with-arms-crossed-on-white-background.jpg?s=612x612&w=0&k=20&c=NtM9Wbs1DBiGaiowsxJY6wNCnLf0POa65rYEwnZymrM="
+  },
+  {
+    "name": "Jane Smith",
+    "comments": "I love the variety of outdoor trees they offer. My Maple Tree is growing beautifully, and the planting tips on the website were super helpful!",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDhs1Z5SSVqH0w_4S8R4lnTj0O7Swn4NA5tA&s"
+  },
+  {
+    "name": "David Johnson",
+    "comments": "Great experience shopping here! The team is knowledgeable, and the delivery was quick. My new Lemon Tree is already producing fruit!",
+    "image": "https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg"
+  },
+  {
+    "name": "Emily Williams",
+    "comments": "Their succulents are amazing! I bought a few Aloe Vera plants, and they look fantastic in my home office. Highly recommended.",
+    "image": "https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg"
+  },
+  {
+    "name": "Michael Brown",
+    "comments": "The Rose Bushes I purchased have added such beauty to my garden. The entire shopping process was seamless, and I will definitely come back for more.",
+    "image": "https://www.shutterstock.com/shutterstock/photos/2137527991/display_1500/stock-photo-portrait-of-smiling-mature-man-standing-on-white-background-2137527991.jpg"
+  }
+]
