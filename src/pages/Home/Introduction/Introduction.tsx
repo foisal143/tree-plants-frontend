@@ -9,7 +9,7 @@ const Introduction = () => {
         <div className="lg:flex justify-between gap-10">
           <div className="lg:w-1/2">
             <img
-              className="w-full h-[350px] rounded-lg"
+              className="w-full h-[300px] rounded-lg"
               src="https://growbilliontrees.com/cdn/shop/files/gift-home-d2c-brands.jpg?v=1710592467&width=1420"
               alt=""
             />

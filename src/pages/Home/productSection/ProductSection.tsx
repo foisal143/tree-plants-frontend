@@ -16,7 +16,7 @@ export type TProduct = {
 const ProductSection = () => {
   const { data: productRes } = useGetAllProductQuery(undefined);
   const products = productRes?.data;
-  console.log(productRes, products);
+
   return (
     <div className="mb-[116px]">
       <Container>

@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+
   const user = null;
   useEffect(() => {
     const handleScroll = () => {
@@ -22,9 +23,9 @@ const Navbar = () => {
   }, []);
   return (
     <nav
-      className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-lg' : 'bg-transparent text-white'
-      }`}
+      className={`fixed w-full  top-0 left-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-white shadow-lg' : `bg-transparent  text-white`
+      } `}
     >
       <Container>
         <div className="flex h-20 justify-between items-center gap-10">
