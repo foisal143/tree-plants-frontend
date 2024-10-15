@@ -1,5 +1,13 @@
-import { TProduct } from '../pages/Home/ProductSection/ProductSection';
-
+type TProduct = {
+  _id: string;
+  category: string;
+  title: string;
+  price: number;
+  quantity: number;
+  description: string;
+  rating: number;
+  image: string;
+};
 const ProductCard = ({ product }: { product: TProduct }) => {
   const { image, title, price, description } = product;
   return (

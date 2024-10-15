@@ -2,7 +2,8 @@ import CategorySection from './CategorySection/CategorySection';
 import GetInTouchSec from './GetInTouchSec/GetInTouchSec';
 import HeroSection from './HeroSection/HeroSection';
 import Introduction from './Introduction/Introduction';
-import ProductSection from './ProductSection/ProductSection';
+import ProductSec from './ProductSec/ProductSec';
+
 import SubscribedSection from './SubscribedSection/SubscribedSection';
 import Testimonial from './Testimonial/Testimonial';
 
@@ -12,7 +13,7 @@ const Home = () => {
       <HeroSection />
       <Introduction />
       <CategorySection />
-      <ProductSection />
+      <ProductSec />
       <GetInTouchSec />
       <Testimonial />
       <SubscribedSection />
