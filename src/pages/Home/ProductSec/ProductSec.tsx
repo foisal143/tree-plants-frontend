@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Container from '../../../components/Container';
 import HeadingText from '../../../components/HeadingText';
 import ProductCard from '../../../components/ProductCard';
@@ -14,7 +15,12 @@ export type TProduct = {
   image: string;
 };
 const ProductSec = () => {
-  const { data: productRes } = useGetAllProductQuery(undefined);
+  const { data: productRes } = useGetAllProductQuery({
+    searchTerm: '',
+    sort: '',
+    page: '',
+    limit: 8,
+  });
   const products = productRes?.data;
 
   return (
@@ -29,6 +35,11 @@ const ProductSec = () => {
           ) : (
             <p>No Product found</p>
           )}
+        </div>
+        <div className="w-full flex justify-center items-center my-12">
+          <Link to="/products">
+            <button className="btn-primary">Load More</button>
+          </Link>
         </div>
       </Container>
     </div>

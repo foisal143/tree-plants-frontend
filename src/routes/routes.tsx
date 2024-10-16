@@ -3,6 +3,7 @@ import MainLayouts from '../layouts/MainLayouts';
 import Home from '../pages/Home/Home';
 import About from '../pages/About/About';
 import Products from '../pages/Products/Products';
+import ProductDetails from '../pages/ProductDetails/ProductDetails';
 
 const route = createBrowserRouter([
   {
@@ -20,6 +21,12 @@ const route = createBrowserRouter([
       {
         path: '/products',
         element: <Products />,
+      },
+      {
+        path: '/product/:id',
+        element: <ProductDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/products/${params.id}`),
       },
     ],
   },

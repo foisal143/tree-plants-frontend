@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 type TProduct = {
   _id: string;
   category: string;
@@ -9,7 +11,7 @@ type TProduct = {
   image: string;
 };
 const ProductCard = ({ product }: { product: TProduct }) => {
-  const { image, title, price, description } = product;
+  const { image, title, price, description, _id } = product;
   return (
     <div className="card bg-base-100 w-full shadow-xl">
       <figure>
@@ -22,7 +24,10 @@ const ProductCard = ({ product }: { product: TProduct }) => {
           Price: <span className="text-red-500">${price}</span>
         </p>
         <div className="card-actions ">
-          <button className=" btn-primary w-full">Add To Cart</button>
+          <Link className="w-full" to={`/product/${_id}`}>
+            {' '}
+            <button className=" btn-primary w-full">Details</button>
+          </Link>
         </div>
       </div>
     </div>
