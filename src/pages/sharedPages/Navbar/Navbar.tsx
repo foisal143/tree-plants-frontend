@@ -64,7 +64,9 @@ const Navbar = () => {
             {user ? (
               <button className="btn-primary">Logout</button>
             ) : (
-              <button className="btn-primary">Login</button>
+              <Link to="/login">
+                <button className="btn-primary">Login</button>
+              </Link>
             )}
           </div>
         </div>
