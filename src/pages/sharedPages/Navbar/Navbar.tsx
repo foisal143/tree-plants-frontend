@@ -4,7 +4,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const paths = ['/', '/about'];
+  const paths = ['/', '/about', '/contact'];
   const { pathname } = useLocation();
   const user = null;
   useEffect(() => {
@@ -24,7 +24,7 @@ const Navbar = () => {
   }, []);
   return (
     <nav
-      className={`fixed w-full  top-0 left-0 z-50 transition-all duration-300 ${
+      className={`fixed w-full  top-0 left-0 z-auto transition-all duration-300 ${
         scrolled
           ? 'bg-white shadow-lg'
           : `bg-transparent  ${paths.includes(pathname) && 'text-white'}`

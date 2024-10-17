@@ -4,6 +4,7 @@ import Home from '../pages/Home/Home';
 import About from '../pages/About/About';
 import Products from '../pages/Products/Products';
 import ProductDetails from '../pages/ProductDetails/ProductDetails';
+import ContactPage from '../pages/ContactPage/ContactPage';
 
 const route = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const route = createBrowserRouter([
         element: <ProductDetails />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/api/products/${params.id}`),
+      },
+      {
+        path: '/contact',
+        element: <ContactPage />,
       },
     ],
   },
