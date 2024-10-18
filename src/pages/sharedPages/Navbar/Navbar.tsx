@@ -5,10 +5,12 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks/hooks';
 import { useSingleUserQuery } from '../../../Redux/features/user/userApis';
 import { logout } from '../../../Redux/features/auth/authSlice';
+import { FaShoppingCart } from 'react-icons/fa';
+import { useGetCartByEmailQuery } from '../../../Redux/features/cart/cartApis';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-
+  const [toggleProfile, setToggleProfile] = useState(false);
   const paths = ['/', '/about', '/contact'];
   const { pathname } = useLocation();
   const { user: userInfo } = useAppSelector(state => state.tree_plant_auth);
@@ -16,6 +18,8 @@ const Navbar = () => {
   // @ts-ignore
   const userRes = useSingleUserQuery(userInfo?.email);
   const user = userRes?.data?.data;
+  const { data: cartRes } = useGetCartByEmailQuery(user?.email);
+  const cartData = cartRes?.data;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,18 +76,33 @@ const Navbar = () => {
           </div>
           <div>
             {userInfo ? (
-              <div className="flex items-center gap-5">
+              <div className="flex relative items-center gap-5">
+                <div className="relative">
+                  <Link to="/cart">
+                    <FaShoppingCart className="text-3xl " />
+                  </Link>
+                  <div className="absolute -top-2 bg-red-500 text-white w-5 h-5 flex justify-center items-center rounded-full -right-3">
+                    {cartData?.length}
+                  </div>
+                </div>
                 <img
-                  className="w-8 border h-8 rounded-full"
+                  onClick={() => setToggleProfile(!toggleProfile)}
+                  className="w-12 cursor-pointer border h-12 rounded-full"
                   src={user?.image}
                   alt=""
                 />
-                <button
-                  onClick={() => dispatch(logout())}
-                  className="btn-primary"
+                <div
+                  className={`p-5 rounded-lg bg-white absolute -left-16 top-12 ${
+                    toggleProfile ? 'block' : 'hidden'
+                  }`}
                 >
-                  Logout
-                </button>
+                  <button
+                    onClick={() => dispatch(logout())}
+                    className="btn-primary"
+                  >
+                    Logout
+                  </button>
+                </div>
               </div>
             ) : (
               <Link to="/login">

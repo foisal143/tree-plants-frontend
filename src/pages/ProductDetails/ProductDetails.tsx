@@ -1,13 +1,41 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import Container from '../../components/Container';
 import HeadingText from '../../components/HeadingText';
 import Rating from 'react-rating';
 import { FaRegStar, FaStar } from 'react-icons/fa';
+import { useAddToCartMutation } from '../../Redux/features/cart/cartApis';
+import { useAppSelector } from '../../Redux/hooks/hooks';
+import toast from 'react-hot-toast';
+import { useEffect } from 'react';
 const ProductDetails = () => {
   const productResponse = useLoaderData();
+  const navigate = useNavigate();
   // @ts-ignore
   const product = productResponse?.data;
+  const user = useAppSelector(state => state.tree_plant_auth.user);
+  const [addToCart, { data: cartRes }] = useAddToCartMutation();
+  const handlerAddToCart = () => {
+    const cartInfo = {
+      title: product?.title,
+      price: product?.price,
+      category: product?.category,
+      stock: product?.quantity,
+      productId: product?._id,
+      quantity: 1,
+      // @ts-ignore
+      email: user?.email,
+      isDeleted: false,
+      image: product?.image,
+    };
+    addToCart(cartInfo);
+  };
+  useEffect(() => {
+    if (cartRes?.success) {
+      toast.success(cartRes?.message);
+      navigate('/cart');
+    }
+  }, [cartRes, navigate]);
   return (
     <div className="py-[116px]">
       <Container>
@@ -39,7 +67,9 @@ const ProductDetails = () => {
               }
               <p>({product?.rating})</p>
             </div>
-            <button className="btn-primary">Add To Cart</button>
+            <button onClick={handlerAddToCart} className="btn-primary">
+              Add To Cart
+            </button>
           </div>
         </div>
       </Container>
