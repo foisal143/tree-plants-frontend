@@ -1,12 +1,22 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useEffect, useState } from 'react';
 import Container from '../../../components/Container';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../Redux/hooks/hooks';
+import { useSingleUserQuery } from '../../../Redux/features/user/userApis';
+import { logout } from '../../../Redux/features/auth/authSlice';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+
   const paths = ['/', '/about', '/contact'];
   const { pathname } = useLocation();
-  const user = null;
+  const { user: userInfo } = useAppSelector(state => state.tree_plant_auth);
+  const dispatch = useAppDispatch();
+  // @ts-ignore
+  const userRes = useSingleUserQuery(userInfo?.email);
+  const user = userRes?.data?.data;
+
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -61,8 +71,20 @@ const Navbar = () => {
             </ul>
           </div>
           <div>
-            {user ? (
-              <button className="btn-primary">Logout</button>
+            {userInfo ? (
+              <div className="flex items-center gap-5">
+                <img
+                  className="w-8 border h-8 rounded-full"
+                  src={user?.image}
+                  alt=""
+                />
+                <button
+                  onClick={() => dispatch(logout())}
+                  className="btn-primary"
+                >
+                  Logout
+                </button>
+              </div>
             ) : (
               <Link to="/login">
                 <button className="btn-primary">Login</button>

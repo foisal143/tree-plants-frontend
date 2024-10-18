@@ -1,15 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import HeadingText from '../../components/HeadingText';
 import { useForm } from 'react-hook-form';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Container from '../../components/Container';
 import { useLoginMutation } from '../../Redux/features/auth/authApis';
+import toast from 'react-hot-toast';
+import { useAppDispatch } from '../../Redux/hooks/hooks';
+import { setUser } from '../../Redux/features/auth/authSlice';
 interface FormData {
   email: string;
   password: string;
 }
 const Login = () => {
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
@@ -17,13 +21,23 @@ const Login = () => {
   } = useForm<FormData>();
   const [showPassword, setShowPassword] = useState(false);
   const [login, { data: loginRes }] = useLoginMutation();
+  const navigate = useNavigate();
   const onSubmit = (data: FormData) => {
     console.log('Email:', data.email, 'Password:', data.password);
     // Handle login logic here
     const userInfo = { email: data.email, password: data.password };
     login(userInfo);
   };
-  console.log(loginRes);
+
+  useEffect(() => {
+    if (loginRes?.success) {
+      const { token, user } = loginRes.data;
+      toast.success(loginRes?.message);
+      dispatch(setUser({ user, token }));
+      navigate('/');
+    }
+  }, [loginRes, dispatch, navigate]);
+
   return (
     <div className="my-[116px]">
       {/* login form section */}
