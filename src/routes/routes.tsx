@@ -8,6 +8,7 @@ import ContactPage from '../pages/ContactPage/ContactPage';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import CartPage from '../pages/CartPage/CartPage';
+import PaymentPage from '../pages/PaymentPage/PaymentPage';
 
 const route = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const route = createBrowserRouter([
       {
         path: '/cart',
         element: <CartPage />,
+      },
+      {
+        path: '/payments/:price',
+        element: <PaymentPage />,
       },
     ],
   },

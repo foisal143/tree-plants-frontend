@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { Link } from 'react-router-dom';
 import CartCard, { TCart } from '../../components/CartCard';
 import Container from '../../components/Container';
 import HeadingText from '../../components/HeadingText';
+import NotDataFound from '../../components/NotDataFound';
 import { useGetCartByEmailQuery } from '../../Redux/features/cart/cartApis';
 import { useAppSelector } from '../../Redux/hooks/hooks';
 
@@ -28,59 +30,73 @@ const CartPage = () => {
                 <CartCard key={product._id} product={product} />
               ))
             ) : (
-              <p>No Prodcut added</p>
+              <>
+                <NotDataFound text="You do not added any product please add a product to checkout!" />
+                <div className="text-center">
+                  <Link to="/products">
+                    <button className="btn-primary ">Contine Shopping</button>
+                  </Link>
+                </div>
+              </>
             )}
           </div>
 
           {/* Summary Section */}
-          <div className="lg:w-1/4 p-4 rounded-md shadow-md">
-            <h3 className="font-semibold font-headingFont mb-5">Summary</h3>
-            {cartProducts.map((item: TCart) => (
-              <p
-                key={item._id}
-                className="flex mb-3 items-center justify-between gap-10"
-              >
-                {item?.title as string}{' '}
-                <span className="text-red-500">${item?.price as number}</span>
+          {cartProducts && cartProducts.length > 0 && (
+            <div className="lg:w-1/4 p-4 rounded-md shadow-md">
+              <h3 className="font-semibold font-headingFont mb-5">Summary</h3>
+              {cartProducts &&
+                cartProducts.map((item: TCart) => (
+                  <p
+                    key={item._id}
+                    className="flex mb-3 items-center justify-between gap-10"
+                  >
+                    {item?.title as string}{' '}
+                    <span className="text-red-500">
+                      ${item?.price as number}
+                    </span>
+                  </p>
+                ))}
+              <p className="font-semibold flex justify-between items-center gap-10">
+                Subtotal: <span className="text-red-500">${totalCost}</span>
               </p>
-            ))}
-            <p className="font-semibold flex justify-between items-center gap-10">
-              Subtotal: <span className="text-red-500">${totalCost}</span>
-            </p>
 
-            <button
-              disabled={!totalCost}
-              className={`w-full mt-5 ${
-                !totalCost
-                  ? 'bg-slate-400 px-8 py-2 rounded-full'
-                  : 'btn-primary'
-              }`}
-            >
-              Checkout
-            </button>
-            <div className="flex mt-5 w-fit mx-auto items-center gap-2">
-              <img
-                className="w-8 h-6 rounded"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbOsJUPXMDaZXyJA2PxFYv2gEVkGofB0fsyQ&s"
-                alt=""
-              />
-              <img
-                className="w-8 h-6 rounded"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToJHTQcSmS0EhhMlMbQhhYhhY2b8Xy-QBkkA&s"
-                alt=""
-              />
-              <img
-                className="w-8 h-6 rounded"
-                src="https://static-00.iconduck.com/assets.00/discover-icon-2048x1313-4euh7fjo.png"
-                alt=""
-              />
-              <img
-                className="w-8 scale-150 h-6 rounded"
-                src="https://www.svgrepo.com/show/328148/amex.svg"
-                alt=""
-              />
+              <Link to={`/payments/${totalCost}`}>
+                <button
+                  disabled={!totalCost}
+                  className={`w-full mt-5 ${
+                    !totalCost
+                      ? 'bg-slate-400 px-8 py-2 rounded-full'
+                      : 'btn-primary'
+                  }`}
+                >
+                  Checkout
+                </button>
+              </Link>
+              <div className="flex mt-5 w-fit mx-auto items-center gap-2">
+                <img
+                  className="w-8 h-6 rounded"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbOsJUPXMDaZXyJA2PxFYv2gEVkGofB0fsyQ&s"
+                  alt=""
+                />
+                <img
+                  className="w-8 h-6 rounded"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToJHTQcSmS0EhhMlMbQhhYhhY2b8Xy-QBkkA&s"
+                  alt=""
+                />
+                <img
+                  className="w-8 h-6 rounded"
+                  src="https://static-00.iconduck.com/assets.00/discover-icon-2048x1313-4euh7fjo.png"
+                  alt=""
+                />
+                <img
+                  className="w-8 scale-150 h-6 rounded"
+                  src="https://www.svgrepo.com/show/328148/amex.svg"
+                  alt=""
+                />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </Container>
     </div>

@@ -17,7 +17,19 @@ const cartApis = baseApi.injectEndpoints({
       }),
       providesTags: ['cart'],
     }),
+    updateQuantity: builder.mutation({
+      query: payload => ({
+        url: `/carts/${payload.id}`,
+        method: 'PATCH',
+        body: { quantity: payload.quantity },
+      }),
+      invalidatesTags: ['cart'],
+    }),
   }),
 });
 
-export const { useGetCartByEmailQuery, useAddToCartMutation } = cartApis;
+export const {
+  useGetCartByEmailQuery,
+  useAddToCartMutation,
+  useUpdateQuantityMutation,
+} = cartApis;
