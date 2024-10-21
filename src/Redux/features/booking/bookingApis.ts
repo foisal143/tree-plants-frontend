@@ -8,13 +8,14 @@ const bookingApis = baseApi.injectEndpoints({
         method: 'POST',
         body: bookingInfo,
       }),
-      invalidatesTags: ['cart'],
+      invalidatesTags: ['cart', 'booking'],
     }),
     getbookings: builder.query({
       query: email => ({
         url: `/bookings/${email}`,
         method: 'GET',
       }),
+      providesTags: ['booking'],
     }),
   }),
 });

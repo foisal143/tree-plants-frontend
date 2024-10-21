@@ -69,9 +69,19 @@ const Navbar = () => {
               <li>
                 <NavLink to={'/contact'}>Contact Us</NavLink>
               </li>
-              <li>
-                <NavLink to={'/blog'}>Blog</NavLink>
-              </li>
+              {user && (
+                <li>
+                  <NavLink
+                    to={
+                      user?.role === 'user'
+                        ? '/dashboard/user-home'
+                        : '/dashboard/admin-home'
+                    }
+                  >
+                    Dashboard
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </div>
           <div>

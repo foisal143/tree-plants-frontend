@@ -9,7 +9,13 @@ import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import CartPage from '../pages/CartPage/CartPage';
 import PaymentPage from '../pages/PaymentPage/PaymentPage';
-
+import DashboardLayout from '../layouts/DashboardLayout';
+import UserHome from '../pages/Dashboard/User/UserHome/UserHome';
+import MyOrders from '../pages/Dashboard/User/MyOrders/MyOrders';
+import AdminHome from '../pages/Dashboard/Admin/AdminHome/AdminHome';
+import ManageOrders from '../pages/Dashboard/Admin/ManageOrders/ManageOrders';
+import ManageUsers from '../pages/Dashboard/Admin/ManageUsers/ManageUsers';
+import ManageProducts from '../pages/Dashboard/Admin/ManageProducts/ManageProducts';
 const route = createBrowserRouter([
   {
     path: '/',
@@ -52,6 +58,36 @@ const route = createBrowserRouter([
       {
         path: '/payments/:price',
         element: <PaymentPage />,
+      },
+    ],
+  },
+  {
+    path: '/dashboard',
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: 'user-home',
+        element: <UserHome />,
+      },
+      {
+        path: 'my-orders',
+        element: <MyOrders />,
+      },
+      {
+        path: 'admin-home',
+        element: <AdminHome />,
+      },
+      {
+        path: 'manage-orders',
+        element: <ManageOrders />,
+      },
+      {
+        path: 'manage-users',
+        element: <ManageUsers />,
+      },
+      {
+        path: 'manage-products',
+        element: <ManageProducts />,
       },
     ],
   },

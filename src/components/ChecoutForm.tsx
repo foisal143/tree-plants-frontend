@@ -38,6 +38,7 @@ const CheckOutForm = ({ price }: { price: number }) => {
     quantity: item.quantity,
   }));
 
+  price = paymentName === 'cod' ? price + 0.1 : price;
   // get the payment secret
   useEffect(() => {
     fetch('http://localhost:5000/api/payment', {
@@ -102,7 +103,7 @@ const CheckOutForm = ({ price }: { price: number }) => {
     }
     if (paymentIntent?.status === 'succeeded') {
       console.log('payment success');
-      booking({ ...formData, productInfo });
+      booking({ ...formData, productInfo, status: 'pending', price });
       toast.success('Payment success');
       // @ts-ignore
       fetch(`http://localhost:5000/api/carts/all-products/${user.email}`, {
@@ -131,7 +132,7 @@ const CheckOutForm = ({ price }: { price: number }) => {
   const handlerCashonDelevery = () => {
     setIsLoading(true);
     if (user) {
-      booking({ ...formData, productInfo });
+      booking({ ...formData, productInfo, status: 'pending', price });
       // @ts-ignore
       fetch(`http://localhost:5000/api/carts/all-products/${user.email}`, {
         method: 'DELETE',
@@ -267,6 +268,11 @@ const CheckOutForm = ({ price }: { price: number }) => {
                 <span className="text-red-500">${item?.price as number}</span>
               </p>
             ))}
+          {paymentName === 'cod' && (
+            <p className="flex justify-between mb-5 items-center gap-10">
+              COD Charge: <span className="text-red-500">$0.10</span>
+            </p>
+          )}
           <p className="font-semibold flex justify-between items-center gap-10">
             Subtotal: <span className="text-red-500">${price}</span>
           </p>
@@ -274,17 +280,23 @@ const CheckOutForm = ({ price }: { price: number }) => {
         {/* payment name set */}
         <div className="flex gap-5 p-5 items-center ">
           <div
-            className={`${paymentName === 'stripe' && 'border-4 rounded-md'}`}
+            className={`${
+              paymentName === 'stripe' && 'border-4 border-green-500 rounded-md'
+            } relative`}
           >
             <img
               title="Stripe payment"
               onClick={() => setPaymentName('stripe')}
-              className="w-12 h-12 rounded-md cursor-pointer"
+              className="w-12 h-12  cursor-pointer"
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd0tpPUn3i_x5jgRcENKrC5S0hfUNU1tUQRA&s"
               alt=""
             />
           </div>
-          <div className={`${paymentName === 'cod' && 'border-4 rounded-md'}`}>
+          <div
+            className={`${
+              paymentName === 'cod' && 'border-4 border-green-500 rounded-md'
+            }`}
+          >
             <img
               title="Cash On Deleviry"
               onClick={() => setPaymentName('cod')}
