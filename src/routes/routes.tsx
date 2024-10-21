@@ -16,6 +16,7 @@ import AdminHome from '../pages/Dashboard/Admin/AdminHome/AdminHome';
 import ManageOrders from '../pages/Dashboard/Admin/ManageOrders/ManageOrders';
 import ManageUsers from '../pages/Dashboard/Admin/ManageUsers/ManageUsers';
 import ManageProducts from '../pages/Dashboard/Admin/ManageProducts/ManageProducts';
+import AddProduct from '../pages/Dashboard/Admin/AddProduct/AddProduct';
 const route = createBrowserRouter([
   {
     path: '/',
@@ -73,6 +74,7 @@ const route = createBrowserRouter([
         path: 'my-orders',
         element: <MyOrders />,
       },
+      // admin routes
       {
         path: 'admin-home',
         element: <AdminHome />,
@@ -88,6 +90,10 @@ const route = createBrowserRouter([
       {
         path: 'manage-products',
         element: <ManageProducts />,
+      },
+      {
+        path: 'add-product',
+        element: <AddProduct />,
       },
     ],
   },

@@ -1,5 +1,11 @@
+import UserHome from '../../User/UserHome/UserHome';
+
 const AdminHome = () => {
-  return <div>this is admin home</div>;
+  return (
+    <>
+      <UserHome />
+    </>
+  );
 };
 
 export default AdminHome;

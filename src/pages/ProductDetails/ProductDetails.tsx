@@ -40,11 +40,11 @@ const ProductDetails = () => {
     <div className="py-[116px]">
       <Container>
         <HeadingText style="mt-12 text-center" heading="Product Details" />
-        <div className="mt-12 lg:flex gap-10 justify-between items-center ">
-          <div className="lg:w-1/2 rounded-lg overflow-hidden">
-            <img className="w-full h-[350px]" src={product?.image} alt="" />
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10 justify-between items-center ">
+          <div className="w-full h-full rounded-lg overflow-hidden">
+            <img className="w-full  h-[350px]" src={product?.image} alt="" />
           </div>
-          <div className="lg:w-1/2 space-y-5">
+          <div className="w-full space-y-5">
             <div>
               <h3 className="text-2xl font-semibold font-headerFont">
                 {product?.title}

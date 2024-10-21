@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useEffect, useState } from 'react';
 import HeadingText from '../../components/HeadingText';
 import { useForm } from 'react-hook-form';
@@ -20,7 +21,7 @@ const Login = () => {
     formState: { errors },
   } = useForm<FormData>();
   const [showPassword, setShowPassword] = useState(false);
-  const [login, { data: loginRes }] = useLoginMutation();
+  const [login, { data: loginRes, error }] = useLoginMutation();
   const navigate = useNavigate();
   const onSubmit = (data: FormData) => {
     console.log('Email:', data.email, 'Password:', data.password);
@@ -28,6 +29,7 @@ const Login = () => {
     const userInfo = { email: data.email, password: data.password };
     login(userInfo);
   };
+  console.log(error);
 
   useEffect(() => {
     if (loginRes?.success) {
@@ -36,7 +38,11 @@ const Login = () => {
       dispatch(setUser({ user, token }));
       navigate('/');
     }
-  }, [loginRes, dispatch, navigate]);
+    if (error) {
+      // @ts-ignore
+      toast.error(error?.data?.message);
+    }
+  }, [loginRes, dispatch, navigate, error]);
 
   return (
     <div className="my-[116px]">

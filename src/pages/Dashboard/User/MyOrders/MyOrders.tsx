@@ -94,10 +94,12 @@ const MyOrders = () => {
         </div>
       ) : (
         <>
-          <NotDataFound text="You Do not get any order please order first" />
-          <Link to="/products">
-            <button className="btn-primary mt-5">Go to Shop</button>
-          </Link>
+          <div className="text-center">
+            <NotDataFound text="You Do not get any order please order first" />
+            <Link to="/products">
+              <button className="btn-primary ">Go to Shop</button>
+            </Link>
+          </div>
         </>
       )}
     </div>
