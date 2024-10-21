@@ -1,6 +1,7 @@
 import { FaMinus, FaPlus, FaTrash } from 'react-icons/fa';
 import { useUpdateQuantityMutation } from '../Redux/features/cart/cartApis';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 export type TCart = {
   title: string;
@@ -18,6 +19,7 @@ export type TCart = {
 const CartCard = ({ product }: { product: TCart }) => {
   const [updateQuantity] = useUpdateQuantityMutation();
   const [loading, setLoading] = useState(false);
+
   const handlerIncreaseQuantity = async () => {
     setLoading(true);
     if (product.stock > product.quantity) {
@@ -38,6 +40,19 @@ const CartCard = ({ product }: { product: TCart }) => {
       setLoading(false);
     }
   };
+
+  const handlerDeleteCart = () => {
+    const isDeleted = window.confirm('Do you want to delete it!');
+    if (isDeleted) {
+      fetch(`http://localhost:5000/api/carts/${product._id}`, {
+        method: 'DELETE',
+      })
+        .then(res => res.json())
+        .then(data => toast.success(data?.message));
+      updateQuantity({ id: product._id, quantity: product.quantity });
+    }
+  };
+
   return (
     <div
       className={`lg:h-32 p-5  border lg:flex justify-between gap-5 rounded-md ${
@@ -85,7 +100,7 @@ const CartCard = ({ product }: { product: TCart }) => {
           </div>
         </div>
         <div className="text-end w-full h-full absolute -bottom-16">
-          <button className="text-2xl text-red-500">
+          <button onClick={handlerDeleteCart} className="text-2xl text-red-500">
             <FaTrash />
           </button>
         </div>

@@ -2,7 +2,11 @@
 import { Link } from 'react-router-dom';
 import HeadingText from '../../../../components/HeadingText';
 import NotDataFound from '../../../../components/NotDataFound';
-import { useGetbookingsQuery } from '../../../../Redux/features/booking/bookingApis';
+import {
+  useDeleteBookingsMutation,
+  useGetbookingsQuery,
+  useUpdateStatusMutation,
+} from '../../../../Redux/features/booking/bookingApis';
 import { useAppSelector } from '../../../../Redux/hooks/hooks';
 import { FaTrash } from 'react-icons/fa';
 
@@ -11,7 +15,14 @@ const MyOrders = () => {
   // @ts-ignore
   const { data: bookingRes } = useGetbookingsQuery(user?.email);
   const bookings = bookingRes?.data;
-
+  const [updateStatus] = useUpdateStatusMutation();
+  const [deleteBookings] = useDeleteBookingsMutation();
+  const handlerCancelOrder = (id: string) => {
+    updateStatus({ id, status: 'canceled' });
+  };
+  const handlerDeleteOrder = (id: string) => {
+    deleteBookings(id);
+  };
   return (
     <div className="p-5">
       <HeadingText style="text-center" heading="My Orders" />
@@ -61,11 +72,17 @@ const MyOrders = () => {
                     <td>
                       {item?.status === 'approved' ||
                       item?.status === 'canceled' ? (
-                        <button>
+                        <button
+                          onClick={() => handlerDeleteOrder(item?._id)}
+                          className="btn-outline btn-error btn"
+                        >
                           <FaTrash />
                         </button>
                       ) : (
-                        <button className="btn-outline btn-success btn">
+                        <button
+                          onClick={() => handlerCancelOrder(item?._id)}
+                          className="btn-outline btn-success btn"
+                        >
                           Cancel
                         </button>
                       )}
