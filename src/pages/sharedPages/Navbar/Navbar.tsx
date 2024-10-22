@@ -8,6 +8,7 @@ import { logout } from '../../../Redux/features/auth/authSlice';
 import { FaBars, FaShoppingCart } from 'react-icons/fa';
 import { useGetCartByEmailQuery } from '../../../Redux/features/cart/cartApis';
 import { FaXmark } from 'react-icons/fa6';
+import { adminLinks, userLinks } from '../../../utils/navlinks';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -120,21 +121,26 @@ const Navbar = () => {
                   alt=""
                 />
                 <div
-                  className={`p-5 rounded-lg bg-white absolute -left-16 top-12 ${
+                  className={`p-5 rounded-lg w-52 bg-white absolute -left-8 top-14 ${
                     toggleProfile ? 'block' : 'hidden'
                   }`}
                 >
-                  <button
-                    onClick={() => dispatch(logout())}
-                    className="btn-primary"
-                  >
-                    Logout
-                  </button>
+                  <ul className="text-black text-center space-y-3">
+                    {user.role === 'admin' ? adminLinks : userLinks}
+                  </ul>
+                  <div className="text-center">
+                    <button
+                      onClick={() => dispatch(logout())}
+                      className="btn-primary  mt-5"
+                    >
+                      Logout
+                    </button>
+                  </div>
                 </div>
               </div>
             ) : (
               <Link to="/login">
-                <button className="btn-primary">Login</button>
+                <button className="btn-primary ">Login</button>
               </Link>
             )}
           </div>
