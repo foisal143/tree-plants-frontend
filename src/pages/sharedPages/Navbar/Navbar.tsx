@@ -5,12 +5,14 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks/hooks';
 import { useSingleUserQuery } from '../../../Redux/features/user/userApis';
 import { logout } from '../../../Redux/features/auth/authSlice';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaBars, FaShoppingCart } from 'react-icons/fa';
 import { useGetCartByEmailQuery } from '../../../Redux/features/cart/cartApis';
+import { FaXmark } from 'react-icons/fa6';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [toggleProfile, setToggleProfile] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(false);
   const paths = ['/', '/about', '/contact'];
   const { pathname } = useLocation();
   const { user: userInfo } = useAppSelector(state => state.tree_plant_auth);
@@ -45,7 +47,7 @@ const Navbar = () => {
       } `}
     >
       <Container>
-        <div className="flex h-20 justify-between items-center gap-10">
+        <div className="flex relative h-20 justify-between items-center gap-10">
           <div>
             <Link to="/">
               <img
@@ -55,8 +57,12 @@ const Navbar = () => {
               />
             </Link>
           </div>
-          <div>
-            <ul className="flex items-center navlink gap-5">
+          <div
+            className={`bg-white ${
+              !toggleMenu ? '-left-[1250px]' : 'left-0'
+            } lg:relative lg:top-0 absolute top-20 left-0 transition-all duration-300 rounded-md lg:bg-transparent p-5 lg:p-0 lg:w-fit lg:text-inherit w-full text-center text-black`}
+          >
+            <ul className="lg:flex space-y-5 lg:space-y-0  items-center navlink gap-5">
               <li>
                 <NavLink to={'/'}>Home</NavLink>
               </li>
@@ -87,6 +93,16 @@ const Navbar = () => {
           <div>
             {userInfo ? (
               <div className="flex relative items-center gap-5">
+                <button
+                  className="w-fit lg:hidden cursor-pointer"
+                  onClick={() => setToggleMenu(!toggleMenu)}
+                >
+                  {toggleMenu ? (
+                    <FaXmark className="text-3xl" />
+                  ) : (
+                    <FaBars className="text-3xl" />
+                  )}
+                </button>
                 <div className="relative">
                   <Link to="/cart">
                     <FaShoppingCart className="text-3xl " />
