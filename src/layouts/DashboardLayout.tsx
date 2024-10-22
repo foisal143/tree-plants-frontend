@@ -51,7 +51,7 @@ const DashboardLayout = () => {
           <p className="flex items-center gap-3">
             <img
               className=" w-14 h-14 rounded-full"
-              src="/public/logo.png"
+              src="https://i.ibb.co.com/p28gN9c/logo.png"
               alt=""
             />
             <h3 className="text-xl font-semibold font-headerFont">
