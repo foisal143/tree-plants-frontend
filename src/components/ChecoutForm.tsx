@@ -64,14 +64,14 @@ const CheckOutForm = ({ price }: { price: number }) => {
     if (!stripe || !elements) {
       // Stripe.js hasn't yet loaded.
       // Make sure to disable form submission until Stripe.js has loaded.
-      console.log('stripe or elements not found');
-      console.log('stripe not found');
+      toast.error('stripe or elements not found');
+
       return;
     }
     const card = elements.getElement(CardElement);
 
     if (card == null) {
-      console.log('card not fuound');
+      toast.error('card not fuound');
       return;
     }
 
@@ -82,7 +82,7 @@ const CheckOutForm = ({ price }: { price: number }) => {
     });
 
     if (error) {
-      console.log('[error]', error);
+      toast.error(error?.message as string);
     } else {
       console.log('[PaymentMethod]', paymentMethod);
     }
@@ -102,7 +102,6 @@ const CheckOutForm = ({ price }: { price: number }) => {
       toast.error(confirmError?.message as string);
     }
     if (paymentIntent?.status === 'succeeded') {
-      console.log('payment success');
       booking({ ...formData, productInfo, status: 'pending', price });
       toast.success('Payment success');
       // @ts-ignore
@@ -138,10 +137,13 @@ const CheckOutForm = ({ price }: { price: number }) => {
         method: 'DELETE',
       })
         .then(res => res.json())
-        .then(data => console.log(data));
+        .then(data => {
+          if (data?.success) {
+            toast.success('Booking success');
+            navigate('/cart');
+          }
+        });
       setIsLoading(false);
-      navigate('/cart');
-      toast.success('Booking success');
     }
   };
 

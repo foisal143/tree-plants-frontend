@@ -53,7 +53,7 @@ const Register = () => {
       console.error('Error uploading image:', error);
     }
   };
-  console.log(registerRes);
+
   useEffect(() => {
     if (registerRes?.success) {
       navigate('/login');

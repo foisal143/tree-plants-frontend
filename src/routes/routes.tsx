@@ -17,6 +17,7 @@ import ManageOrders from '../pages/Dashboard/Admin/ManageOrders/ManageOrders';
 import ManageUsers from '../pages/Dashboard/Admin/ManageUsers/ManageUsers';
 import ManageProducts from '../pages/Dashboard/Admin/ManageProducts/ManageProducts';
 import AddProduct from '../pages/Dashboard/Admin/AddProduct/AddProduct';
+import EditProduct from '../pages/Dashboard/Admin/EditProduct/EditProduct';
 const route = createBrowserRouter([
   {
     path: '/',
@@ -90,6 +91,12 @@ const route = createBrowserRouter([
       {
         path: 'manage-products',
         element: <ManageProducts />,
+      },
+      {
+        path: 'manage-products/:id',
+        element: <EditProduct />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/products/${params.id}`),
       },
       {
         path: 'add-product',

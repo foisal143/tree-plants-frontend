@@ -15,7 +15,6 @@ const Banner = ({
   path: string;
   button: string;
 }) => {
-  console.log(img);
   return (
     <div
       style={{

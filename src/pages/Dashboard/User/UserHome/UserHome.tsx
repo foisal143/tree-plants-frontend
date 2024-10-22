@@ -7,7 +7,6 @@ const UserHome = () => {
   // @ts-ignore
   const { data: userRes } = useSingleUserQuery(user?.email);
   const userInfo = userRes?.data;
-  console.log(userInfo);
 
   return (
     <div className="h-full w-full flex justify-center items-center ">

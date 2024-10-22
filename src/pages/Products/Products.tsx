@@ -24,7 +24,7 @@ const Products = () => {
   const products = productRes?.data;
   const totalProd = prodRes?.data?.length;
   const pageNumber = Math.ceil(totalProd / 8);
-  console.log(pageNumber);
+
   const pageNumberArray = [];
   for (let i = 1; i <= pageNumber; i++) {
     pageNumberArray.push(i);

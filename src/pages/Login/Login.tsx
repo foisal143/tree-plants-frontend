@@ -24,12 +24,9 @@ const Login = () => {
   const [login, { data: loginRes, error }] = useLoginMutation();
   const navigate = useNavigate();
   const onSubmit = (data: FormData) => {
-    console.log('Email:', data.email, 'Password:', data.password);
-    // Handle login logic here
     const userInfo = { email: data.email, password: data.password };
     login(userInfo);
   };
-  console.log(error);
 
   useEffect(() => {
     if (loginRes?.success) {
