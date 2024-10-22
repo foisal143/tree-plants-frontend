@@ -16,19 +16,26 @@ const ProductDetails = () => {
   const user = useAppSelector(state => state.tree_plant_auth.user);
   const [addToCart, { data: cartRes }] = useAddToCartMutation();
   const handlerAddToCart = () => {
-    const cartInfo = {
-      title: product?.title,
-      price: product?.price,
-      category: product?.category,
-      stock: product?.quantity,
-      productId: product?._id,
-      quantity: 1,
-      // @ts-ignore
-      email: user?.email,
-      isDeleted: false,
-      image: product?.image,
-    };
-    addToCart(cartInfo);
+    if (!user) {
+      const prompt = window.confirm('Please login first!');
+      if (prompt) {
+        navigate('/login');
+      }
+    } else {
+      const cartInfo = {
+        title: product?.title,
+        price: product?.price,
+        category: product?.category,
+        stock: product?.quantity,
+        productId: product?._id,
+        quantity: 1,
+        // @ts-ignore
+        email: user?.email,
+        isDeleted: false,
+        image: product?.image,
+      };
+      addToCart(cartInfo);
+    }
   };
   useEffect(() => {
     if (cartRes?.success) {
