@@ -52,7 +52,7 @@ const Navbar = () => {
             <Link to="/">
               <img
                 className="w-14 h-14 rounded-full"
-                src="/public/logo.png"
+                src="https://i.ibb.co.com/p28gN9c/logo.png"
                 alt="logo"
               />
             </Link>

@@ -4,6 +4,7 @@ import HeadingText from '../../components/HeadingText';
 import ProductCard from '../../components/ProductCard';
 import { useGetAllProductQuery } from '../../Redux/features/product/productApis';
 import { TProduct } from '../Home/ProductSec/ProductSec';
+import NotDataFound from '../../components/NotDataFound';
 
 const Products = () => {
   const { data: prodRes } = useGetAllProductQuery({
@@ -76,29 +77,37 @@ const Products = () => {
             </form>
           </div>
         </div>
-        <div className="my-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {products && products.length > 0 ? (
-            products.map((item: TProduct) => (
-              <ProductCard product={item} key={item._id} />
-            ))
-          ) : (
-            <p> No product found</p>
-          )}
-        </div>
+        {products && products?.length > 0 ? (
+          <div className="my-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+            {products &&
+              products?.length > 0 &&
+              products.map((item: TProduct) => (
+                <ProductCard product={item} key={item._id} />
+              ))}
+          </div>
+        ) : (
+          <div className="pt-24">
+            <NotDataFound text="Products not found" />
+          </div>
+        )}
       </Container>
-      <div className="flex justify-center items-center mt-12">
-        <div className="join">
-          {pageNumberArray.map(num => (
-            <button
-              onClick={() => setPage(num)}
-              key={num}
-              className={`join-item btn btn-md ${page === num && 'btn-active'}`}
-            >
-              {num}
-            </button>
-          ))}
+      {products && products?.length > 0 && (
+        <div className="flex justify-center items-center mt-12">
+          <div className="join">
+            {pageNumberArray.map(num => (
+              <button
+                onClick={() => setPage(num)}
+                key={num}
+                className={`join-item btn btn-md ${
+                  page === num && 'btn-active'
+                }`}
+              >
+                {num}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
