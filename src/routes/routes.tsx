@@ -39,7 +39,9 @@ const route = createBrowserRouter([
         path: '/product/:id',
         element: <ProductDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/products/${params.id}`),
+          fetch(
+            `https://tree-plants-server.vercel.app/api/products/${params.id}`
+          ),
       },
       {
         path: '/contact',
@@ -96,7 +98,9 @@ const route = createBrowserRouter([
         path: 'manage-products/:id',
         element: <EditProduct />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/products/${params.id}`),
+          fetch(
+            `https://tree-plants-server.vercel.app/api/products/${params.id}`
+          ),
       },
       {
         path: 'add-product',

@@ -41,7 +41,7 @@ const CheckOutForm = ({ price }: { price: number }) => {
   price = paymentName === 'cod' ? price + 0.1 : price;
   // get the payment secret
   useEffect(() => {
-    fetch('http://localhost:5000/api/payment', {
+    fetch('https://tree-plants-server.vercel.app/api/payment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -105,9 +105,13 @@ const CheckOutForm = ({ price }: { price: number }) => {
       booking({ ...formData, productInfo, status: 'pending', price });
       toast.success('Payment success');
       // @ts-ignore
-      fetch(`http://localhost:5000/api/carts/all-products/${user.email}`, {
-        method: 'DELETE',
-      })
+      fetch(
+        // @ts-ignore
+        `https://tree-plants-server.vercel.app/api/carts/all-products/${user?.email}`,
+        {
+          method: 'DELETE',
+        }
+      )
         .then(res => res.json())
         .then(data => console.log(data));
       setIsLoading(false);
@@ -133,9 +137,13 @@ const CheckOutForm = ({ price }: { price: number }) => {
     if (user) {
       booking({ ...formData, productInfo, status: 'pending', price });
       // @ts-ignore
-      fetch(`http://localhost:5000/api/carts/all-products/${user.email}`, {
-        method: 'DELETE',
-      })
+      fetch(
+        // @ts-ignore
+        `https://tree-plants-server.vercel.app/api/carts/all-products/${user?.email}`,
+        {
+          method: 'DELETE',
+        }
+      )
         .then(res => res.json())
         .then(data => {
           if (data?.success) {

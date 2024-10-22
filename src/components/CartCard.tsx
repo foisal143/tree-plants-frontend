@@ -44,7 +44,7 @@ const CartCard = ({ product }: { product: TCart }) => {
   const handlerDeleteCart = () => {
     const isDeleted = window.confirm('Do you want to delete it!');
     if (isDeleted) {
-      fetch(`http://localhost:5000/api/carts/${product._id}`, {
+      fetch(`https://tree-plants-server.vercel.app/api/carts/${product._id}`, {
         method: 'DELETE',
       })
         .then(res => res.json())
