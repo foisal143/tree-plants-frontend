@@ -126,7 +126,7 @@ const Navbar = () => {
                   }`}
                 >
                   <ul className="text-black text-center space-y-3">
-                    {user.role === 'admin' ? adminLinks : userLinks}
+                    {user?.role === 'admin' ? adminLinks : userLinks}
                   </ul>
                   <div className="text-center">
                     <button
