@@ -59,7 +59,7 @@ const Navbar = () => {
           </div>
           <div
             className={`bg-white ${
-              !toggleMenu ? '-left-[1250px]' : 'left-0'
+              !toggleMenu ? 'lg:left-0 -left-[1250px]' : 'left-0'
             } lg:relative lg:top-0 absolute top-20 left-0 transition-all duration-300 rounded-md lg:bg-transparent p-5 lg:p-0 lg:w-fit lg:text-inherit w-full text-center text-black`}
           >
             <ul className="lg:flex space-y-5 lg:space-y-0  items-center navlink gap-5">

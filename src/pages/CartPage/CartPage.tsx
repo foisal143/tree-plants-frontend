@@ -23,7 +23,7 @@ const CartPage = () => {
     <div className="my-[116px]">
       <Container>
         <HeadingText style="text-center" heading="My Cart" />
-        <div className="flex mt-12 justify-between gap-10">
+        <div className=" lg:flex mt-12 justify-between gap-10">
           <div className="flex-1">
             {cartProducts && cartProducts?.length > 0 ? (
               cartProducts.map((product: TCart) => (
@@ -43,7 +43,7 @@ const CartPage = () => {
 
           {/* Summary Section */}
           {cartProducts && cartProducts.length > 0 && (
-            <div className="lg:w-1/4 p-4 rounded-md shadow-md">
+            <div className="lg:w-1/4 mt-12 lg:mt-0 p-4 rounded-md shadow-md">
               <h3 className="font-semibold font-headingFont mb-5">Summary</h3>
               {cartProducts &&
                 cartProducts.map((item: TCart) => (

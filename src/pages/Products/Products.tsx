@@ -42,7 +42,7 @@ const Products = () => {
     <div className="my-[116px]">
       <Container>
         <HeadingText heading="Our Products" style="text-center my-12" />
-        <div className="flex justify-between items-center ">
+        <div className="lg:flex space-y-5 lg:space-y-0 justify-between items-center ">
           <div>
             <select
               onChange={e => setSortValue(e.target.value)}
@@ -58,7 +58,7 @@ const Products = () => {
             </select>
           </div>
 
-          <div className=" text-center w-1/2">
+          <div className=" text-center lg:w-1/2">
             <form onSubmit={handlerSearch} action="">
               <div className="join lg:w-full ">
                 <input

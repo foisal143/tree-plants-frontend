@@ -37,7 +37,7 @@ const ProductDetails = () => {
     }
   }, [cartRes, navigate]);
   return (
-    <div className="py-[116px]">
+    <div className="py-[116px] text-center lg:text-start">
       <Container>
         <HeadingText style="mt-12 text-center" heading="Product Details" />
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10 justify-between items-center ">
@@ -55,7 +55,7 @@ const ProductDetails = () => {
             <p className="text-red-500 font-semibold text-3xl">
               ${product?.price}
             </p>
-            <div className="flex items-center gap-1">
+            <div className="flex w-fit mx-auto lg:mx-0 items-center gap-1">
               {
                 // @ts-ignore
                 <Rating

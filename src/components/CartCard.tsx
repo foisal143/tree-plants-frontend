@@ -61,8 +61,8 @@ const CartCard = ({ product }: { product: TCart }) => {
     >
       <img className="w-24 rounded-md h-full" src={product.image} alt="" />
       <div className="flex-1 relative">
-        <div className="lg:flex justify-between gap-5 items-center">
-          <div>
+        <div className="lg:flex space-y-3 lg:space-y-0 justify-between gap-5 items-center">
+          <div className=" ">
             <h3 className="text-xl font-semibold font-headerFont">
               {product.title}
             </h3>

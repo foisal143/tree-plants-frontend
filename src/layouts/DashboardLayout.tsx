@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { useAppSelector } from '../Redux/hooks/hooks';
+import { FaBars } from 'react-icons/fa';
 
 const DashboardLayout = () => {
   const user = useAppSelector(state => state.tree_plant_auth.user);
@@ -46,14 +47,23 @@ const DashboardLayout = () => {
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col ">
+        <div className="px-5 lg:hidden py-5 flex justify-between gap-10 items-center">
+          <p className="flex items-center gap-3">
+            <img
+              className=" w-14 h-14 rounded-full"
+              src="/public/logo.png"
+              alt=""
+            />
+            <h3 className="text-xl font-semibold font-headerFont">
+              Tree Plants
+            </h3>
+          </p>
+          <label htmlFor="my-drawer-2" className=" w-fit  drawer-button ">
+            <FaBars className="text-3xl" />
+          </label>
+        </div>
         {/* Page content here */}
         <Outlet />
-        <label
-          htmlFor="my-drawer-2"
-          className=" btn-primary drawer-button lg:hidden"
-        >
-          Open drawer
-        </label>
       </div>
       <div className="drawer-side">
         <label

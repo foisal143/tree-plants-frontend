@@ -257,7 +257,7 @@ const CheckOutForm = ({ price }: { price: number }) => {
       </div>
 
       <div className="lg:w-1/2">
-        <div className="w-full p-4 rounded-md  mt-32">
+        <div className="w-full p-4 rounded-md mt-12  lg:mt-32">
           <h3 className="font-semibold font-headingFont mb-5">Summary</h3>
           {cartServices &&
             cartServices.length > 0 &&

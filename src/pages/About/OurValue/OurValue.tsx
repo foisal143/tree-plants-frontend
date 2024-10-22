@@ -7,7 +7,7 @@ import { MdSupport } from 'react-icons/md';
 
 const OurValue = () => {
   return (
-    <div className="bg-[url(https://thumbs.dreamstime.com/b/young-flowers-plant-nursery-1-1575922.jpg)] text-white h-[500px] w-full bg-cover bg-center bg-fixed relative">
+    <div className="bg-[url(https://thumbs.dreamstime.com/b/young-flowers-plant-nursery-1-1575922.jpg)] text-white h-[1000px] lg:h-[500px] w-full bg-cover bg-center bg-fixed relative">
       <div className="absolute w-full flex justify-center items-center h-full bg-black/50">
         {' '}
         <Container>

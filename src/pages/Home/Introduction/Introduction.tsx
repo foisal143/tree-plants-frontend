@@ -14,7 +14,7 @@ const Introduction = () => {
               alt=""
             />
           </div>
-          <div className="lg:w-1/2 space-y-5">
+          <div className="lg:w-1/2 mt-5 lg:mt-0 text-center lg:text-start space-y-5">
             <HeadingText
               style=""
               heading=" Grow Your Green Space with Us"

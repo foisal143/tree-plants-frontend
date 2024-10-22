@@ -15,7 +15,7 @@ const OurStory = () => {
               className="w-full h-[350px] rounded-lg shadow-lg"
             />
           </div>
-          <div className="lg:w-1/2 mb-6 lg:mb-0 lg:pr-6">
+          <div className="lg:w-1/2 my-6 lg:my-0 lg:text-start text-center lg:pr-6">
             <h2 className="text-2xl font-semibold font-headerFont mb-4">
               Nurturing Growth: The Story Behind Our Nursery
             </h2>
